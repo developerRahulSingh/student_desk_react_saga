@@ -1,0 +1,47 @@
+.BookListComponent {
+  text-align: center;
+  box-shadow: 2px 0 4px #d1d1d1;
+  border: 2px solid #d1d1d1;
+  margin: 8px auto;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-color {
+  color: #666666;
+}
+
+.link-text-color {
+  color: #76ba5c;
+}
+
+.book-title-style {
+  text-decoration: none;
+}
+
+.link-text-style {
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.text-font-size-16 {
+  font-size: 16px;
+}
+
+.img-size {
+  height: 30px;
+  width: 30px;
+}
+
+.ButtonStyle {
+  background-color: #76ba5c;
+  font-weight: bolder;
+  border-radius: 4px;
+  border: 2px solid #76ba5c;
+  min-height: 40px;
+  color: #ffffff;
+  margin: 4px;
+}

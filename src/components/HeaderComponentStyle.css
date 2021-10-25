@@ -1,0 +1,25 @@
+.HeaderComponentStyle {
+    justify-content: space-between;
+}
+
+.HeaderStyle {
+    height: 80px;
+    background-color:#ffffff;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.ButtonStyle {
+    background-color: #76ba5c;
+    font-weight: bolder;
+    border-radius: 4px;
+    border: 2px solid #76ba5c;
+    min-height: 40px;
+    margin: 16px;
+    color: #ffffff;
+}
+
+.ImageStyle {
+    float: left;
+    padding: 8px;
+}

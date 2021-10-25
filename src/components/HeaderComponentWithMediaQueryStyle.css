@@ -1,0 +1,36 @@
+.ImageStyle {
+    float: left;
+    padding: 8px;
+}
+
+.Button-Div-Style {
+    float: right;
+}
+
+.ButtonStyle {
+    float: right;
+    background-color: #76ba5c;
+    font-weight: bolder;
+    border-radius: 4px;
+    border: 2px solid #76ba5c;
+    min-height: 40px;
+    margin: 16px;
+    color: #ffffff;
+}
+
+@media screen and (max-width:512px) {
+    .ImageStyle {
+        float: none!important;
+        text-align: center;
+    } 
+
+    .Button-Div-Style {
+        float: none!important;
+        text-align: center;
+    }
+    
+    .ButtonStyle {
+        float: none!important;
+        text-align: center;
+    } 
+}
