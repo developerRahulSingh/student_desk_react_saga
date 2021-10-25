@@ -1,27 +1,38 @@
+import * as types from "../types";
+
 const INITIAL_STATE = {
-    bookDetailData: [],
-    searchBookList:[],
-    loading: false,
-  };
-  
-  const BookDetailReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-      case "FETCH_BOOK_DETAIL":
-        state.loading = false;
-        state.bookDetailData = action.payload;
-        break;
-      case "FETCH_SEARCH_BOOK_LIST":
-        state.loading = false;
-        state.searchBookList = action.payload;
-        break;
-      case "LOADING":
-        state.loading = true;
-        break;
-      default:
-        return state;
-    }
-    return { ...state };
-  };
-  
-  export default BookDetailReducer;
-  
+  bookDetailData: [],
+  searchBookList: [],
+  loading: false,
+};
+
+const BookDetailReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case types.FETCH_BOOK_DETAIL_REQUESTED:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.FETCH_BOOKS_DETAIL_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        bookDetailData: action.payload,
+      };
+    case types.FETCH_SEARCH_BOOK_LIST_REQUESTED:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.FETCH_SEARCH_BOOKS_LIST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        searchBookList: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export default BookDetailReducer;

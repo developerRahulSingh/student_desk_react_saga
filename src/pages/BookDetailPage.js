@@ -1,15 +1,15 @@
-import { connect, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { FetchBooksDetail } from "../reduxStore/Action/action";
 import "./BookDetailPageStyle.css";
+import { getBooksDetail } from "../reduxStore/Action";
 
-function BookDetailPage({ bookDetailData }) {
+function BookDetailPage() {
   const dispatch = useDispatch();
   const { bookId } = useParams();
-
+  const bookDetailData = useSelector(state => state.BookDetailReducer.bookDetailData);
   useEffect(() => {
-    dispatch(FetchBooksDetail(bookId));
+    dispatch(getBooksDetail(bookId));
   }, []);
   return (
     <div className="container BookDetailPage background-color">
@@ -128,15 +128,4 @@ function BookDetailPage({ bookDetailData }) {
   );
 }
 
-function mapStateToProps(state) {
-  console.log("bookDetailData ==>> ", state.BookDetailReducer.bookDetailData);
-  return {
-    bookDetailData: state.BookDetailReducer.bookDetailData,
-  };
-}
-
-// function mapDispatchToProps(dispatch) {
-//   return {};
-// }
-
-export default connect(mapStateToProps, { FetchBooksDetail })(BookDetailPage);
+export default (BookDetailPage);

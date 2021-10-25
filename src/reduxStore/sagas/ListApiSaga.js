@@ -3,19 +3,19 @@ import { FetchBooksList } from "../../services/index";
 import * as types from "../types";
 
 function* fetchBookListData() {
-//   yield put({ type: `${types.FETCH_BOOKS_LIST}` });
+  // yield put({ type: `${types.LOADING}` });
   try {
     const response = yield call(FetchBooksList);
-    console.log("respone ==>> ", response);
+    console.log("fetchBookListData",response);
     yield put({
       type: `${types.FETCH_BOOKS_LIST_SUCCESS}`,
       payload: response,
     });
   } catch (error) {
-    // yield put({
-    //   type: `${types.FETCH_BOOK_DATA_FAILURE}`,
-    //   payload: error.message,
-    // });
+    yield put({
+      type: `${types.FETCH_BOOK_DATA_FAILURE}`,
+      payload: error.message,
+    });
   }
 }
 

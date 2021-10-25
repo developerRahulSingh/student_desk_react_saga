@@ -1,11 +1,10 @@
-import { connect, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import { useParams } from "react-router-dom";
 import "./HomePageStyle.css";
-import { FetchSearchBooksList } from "../reduxStore/Action/action";
-import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+import { getSearchBooksList } from "../reduxStore/Action";
 
-function HomePage({ bookListData }) {
+function HomePage({}) {
   const [newArrivalData, setNewArrivalData] = React.useState([
     {
       title: "Javascriptbible",
@@ -51,9 +50,12 @@ function HomePage({ bookListData }) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const dispatch = useDispatch();
   const { searchBookList } = useParams();
+  const bookListData = useSelector(
+    (state) => state.BookDetailReducer.searchBookList
+  );
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
-    dispatch(FetchSearchBooksList(searchTerm));
+    dispatch(getSearchBooksList(searchTerm));
   };
   return (
     <div style={{ textAlign: "center" }}>
@@ -116,7 +118,7 @@ function HomePage({ bookListData }) {
                 className="btn btn-secondary"
                 style={{ background: "#76ba5c" }}
                 type="button"
-                onClick={() => dispatch(FetchSearchBooksList(searchTerm))}
+                onClick={() => console.log("test")}
               >
                 <i className="fa fa-search"></i>
               </button>
@@ -311,19 +313,4 @@ function HomePage({ bookListData }) {
   );
 }
 
-function mapStateToProps(state) {
-  console.log("searchBookList ==>> ", state.BookDetailReducer.searchBookList);
-  console.log("searchBookList reducer ==>> ", state.BookDetailReducer);
-  console.log("searchBookList state ==>> ", state);
-  return {
-    bookListData: state.BookDetailReducer.searchBookList,
-  };
-}
-
-// function mapDispatchToProps(dispatch) {
-//   return {};
-// }
-
-export default connect(mapStateToProps, { FetchSearchBooksList })(HomePage);
-
-// export default HomePage;
+export default HomePage;
